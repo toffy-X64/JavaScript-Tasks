@@ -1,0 +1,22 @@
+.container {
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.timer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 0 20vw;
+}
+
+.timer-block {
+    background-color: black;
+    border-radius: 10px;
+    padding: 10px 50px;
+    text-align: center;
+
+    font-size: 24px;
+    color: white;
+}
