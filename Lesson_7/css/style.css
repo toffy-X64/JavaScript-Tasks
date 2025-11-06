@@ -1,0 +1,64 @@
+.container {
+    margin: 0 auto;
+    max-width: 1280px;
+}
+
+.card {
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 15px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+}
+
+.burger__menu, .burger__button {
+    display: none;
+}
+
+.header {
+    padding: 10px 15px;
+    background-color: antiquewhite;
+
+    margin-bottom: 25px;
+
+    z-index: 40;
+}
+
+.header__menu {
+    display: flex;
+    gap: 20px;
+
+    align-items: center;
+    list-style-type: none;
+}
+
+.header__menu a {
+    text-decoration: none;
+    font-size: 18px;
+}
+
+@media(max-width: 450px) {
+    .burger__menu.active {
+        display: block;
+        padding: 10px;
+        background-color: antiquewhite;
+    }
+
+    .burger__menu.active .header__menu {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        text-align: left;
+    }
+
+    .burger__button {
+        display: block;
+    }
+
+    .header__menu {
+        display: none;
+    }
+}
