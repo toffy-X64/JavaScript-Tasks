@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW-9 Task 2</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="modal-wrapper">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Create product</h3>
+                <button class="modal-close-btn">x</button>
+            </div>
+            <form class="modal-content" id = "modal-form">
+                <input type="text" id = 'title' name = 'title' placeholder="title" required>
+                <textarea name="description" id="description" placeholder="description" minlength="5" required></textarea>
+                <input type="number" name = "price" id = "price" placeholder="price" required>
+                <input type="number" name = "discount" id = "discount" placeholder="discount" required>
+                <input type="number" name = "in_stock" id = "in_stock" placeholder="in_stock" required>
+                <input type="text" id = 'brand' name = 'brand' placeholder="brand" required>
+                <button>Save product</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <button id = 'modal-open-btn'>Open modal window</button>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
