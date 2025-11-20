@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eJobs</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__container container">
+            <h1 class="header__title">eJobs</h1>
+            <button class="header__button" id = 'open-vacancy-modal'>create Vacancy</button>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="modal" id="vacancyModal">
+            <div class="modal__content">
+                <button class="modal__close" id = 'vacancy-modal-close'>&times;</button>
+                <h2 class="modal__title">Create Vacancy</h2>
+
+                <form class="modal__form">
+                    <input type="text" placeholder="Назва посади" class="modal__input" name = 'title' id = 'title' />
+                    <select class="modal__input" name = 'category' id = 'category'>
+                        <option value="">Категорія</option>
+                        <option value="it">IT</option>
+                        <option value="design">Дизайн</option>
+                        <option value="marketing">Маркетинг</option>
+                    </select>
+                    <input type="number" placeholder="Зарплата" class="modal__input" name = 'salary' id = 'salary' />
+                    <input type="text" placeholder="Компанія" class="modal__input" id = 'companyName' name = 'companyName' />
+                    <input type="text" placeholder="Локація" class="modal__input" id = 'location' name = 'location' />
+                    <input type="url" placeholder="Картинка" class="modal__input" id = 'companyLogo' name = 'companyLogo' />
+
+                    <input type="text" name = 'id' id = 'id' style = 'display: none;'>
+                    <button type="submit" class="modal__submit">Додати вакансію</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container">
+            <section class="filters">
+                <input class="filters__search" type="text" placeholder="Search vacancies..." />
+
+                <div class="filters__wrapper">
+                    <select class="filters__dropdown">
+                        <option value="">All categories</option>
+                        <option value="it">IT</option>
+                        <option value="design">Design</option>
+                        <option value="marketing">Marketing</option>
+                    </select>
+                    <select class="filters__dropdown">
+                        <option value="newest">Newest first</option>
+                        <option value="oldest">Oldest first</option>
+                        <option value="esc">By increasing salary</option>
+                        <option value="desc">By decreasing salary</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="vacancies" id = 'vacancies-section'>
+            </section>
+
+
+            <div class="pagination">
+                <button class="pagination__button">&laquo;</button>
+                <button class="pagination__button active">1</button>
+                <button class="pagination__button">2</button>
+                <button class="pagination__button">3</button>
+                <button class="pagination__button">&raquo;</button>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

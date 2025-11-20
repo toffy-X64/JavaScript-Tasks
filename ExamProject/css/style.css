@@ -1,0 +1,314 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1180px;
+  padding: 0 20px;
+}
+
+/* Шапка */
+.header {
+  background: linear-gradient(90deg, #0d6efd, #6610f2);
+  padding: 20px 0;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.header__button {
+  background-color: #fff;
+  color: #6610f2;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.header__button:hover {
+  background-color: #e9ecef;
+  color: #495057;
+  transform: translateY(-2px);
+}
+
+/* Фільтри */
+.filters {
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.filters__search {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  font-size: 1rem;
+}
+
+.filters__wrapper {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filters__dropdown {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Вакансії */
+.vacancies {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.vacancy-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vacancy-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Лого */
+.vacancy-card__logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.vacancy-card__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.vacancy-card__salary {
+  font-weight: 500;
+  color: #0d6efd;
+}
+
+.vacancy-card__company-info {
+  display: flex;
+  gap: 5px;
+}
+
+.vacancy-card__category {
+  background-color: #f1f3f5;
+  padding: 5px 10px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.vacancy-card__company {
+  background-color:black;
+  color: white;
+  padding: 5px 10px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.vacancy-card__company-location {
+  background-color:black;
+  color: white;
+  padding: 5px 10px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+/* Дії */
+.vacancy-card__actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.vacancy-card__btn {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.vacancy-card__btn.edit {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+.vacancy-card__btn.edit:hover {
+  background-color: #0b5ed7;
+}
+
+.vacancy-card__btn.delete {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.vacancy-card__btn.delete:hover {
+  background-color: #bb2d3b;
+}
+
+/* Пагінація */
+.pagination {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pagination__button {
+  border: none;
+  background-color: #e9ecef;
+  color: #212529;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.pagination__button:hover,
+.pagination__button.active {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 37, 41, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+}
+
+/* Modal Box */
+.modal__content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  position: relative;
+  animation: fadeInUp 0.3s ease;
+}
+
+.modal__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Close Button */
+.modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #6c757d;
+}
+
+/* Form Inputs */
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal__input,
+.modal__file {
+  padding: 12px 14px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.modal__file {
+  padding: 10px;
+}
+
+.modal__submit {
+  background-color: #6610f2;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.modal__submit:hover {
+  background-color: #560bd0;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
