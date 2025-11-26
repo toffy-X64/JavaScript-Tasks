@@ -274,16 +274,20 @@ body {
   gap: 15px;
 }
 
-.modal__input,
-.modal__file {
+.modal__input {
   padding: 12px 14px;
   border: 1px solid #ced4da;
   border-radius: 8px;
   font-size: 0.95rem;
+  width: 100%;
 }
 
-.modal__file {
-  padding: 10px;
+input.modal__input:valid:not(:placeholder-shown) {
+  border: 1px solid green;
+}
+
+input.modal__input:invalid:not(:placeholder-shown) {
+  border: 1px solid red;
 }
 
 .modal__submit {
@@ -301,7 +305,12 @@ body {
   background-color: #560bd0;
 }
 
-/* Animations */
+.error-message {
+  font-size: 14px;
+  color: red;
+  padding: 5px;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

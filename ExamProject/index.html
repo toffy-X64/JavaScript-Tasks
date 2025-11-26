@@ -22,17 +22,32 @@
                 <h2 class="modal__title">Create Vacancy</h2>
 
                 <form class="modal__form">
-                    <input type="text" placeholder="Назва посади" class="modal__input" name = 'title' id = 'title' />
-                    <select class="modal__input" name = 'category' id = 'category'>
+                    <div class="form__control">
+                        <input type="text" minlength="3" placeholder="Назва посади" class="modal__input" name = 'title' id = 'title' required />
+                        <p class="error-message"></p>
+                    </div>
+                    <select class="modal__input" name = 'category' id = 'category' required>
                         <option value="">Категорія</option>
                         <option value="it">IT</option>
                         <option value="design">Дизайн</option>
                         <option value="marketing">Маркетинг</option>
                     </select>
-                    <input type="number" placeholder="Зарплата" class="modal__input" name = 'salary' id = 'salary' />
-                    <input type="text" placeholder="Компанія" class="modal__input" id = 'companyName' name = 'companyName' />
-                    <input type="text" placeholder="Локація" class="modal__input" id = 'location' name = 'location' />
-                    <input type="url" placeholder="Картинка" class="modal__input" id = 'companyLogo' name = 'companyLogo' />
+                    <div class="form__control">
+                        <input type="number" step='1' min="300" placeholder="Зарплата" class="modal__input" name = 'salary' id = 'salary' required />
+                        <p class="error-message"></p>
+                    </div>
+                    <div class="form__control">
+                        <input type="text" placeholder="Компанія" class="modal__input" id = 'companyName' name = 'companyName' required />
+                        <p class="error-message"></p>
+                    </div>
+                    <div class="form__control">
+                        <input type="text" placeholder="Локація" class="modal__input" id = 'location' name = 'location' required />
+                        <p class="error-message"></p>
+                    </div>
+                    <div class="form__control">
+                        <input type="url" placeholder="Картинка" class="modal__input" id = 'companyLogo' name = 'companyLogo' required />
+                        <p class="error-message"></p>
+                    </div>
 
                     <input type="text" name = 'id' id = 'id' style = 'display: none;'>
                     <button type="submit" class="modal__submit">Додати вакансію</button>
@@ -45,13 +60,13 @@
                 <input class="filters__search" type="text" placeholder="Search vacancies..." />
 
                 <div class="filters__wrapper">
-                    <select class="filters__dropdown">
+                    <select class="filters__dropdown" id = 'categories-dropdown'>
                         <option value="">All categories</option>
                         <option value="it">IT</option>
                         <option value="design">Design</option>
                         <option value="marketing">Marketing</option>
                     </select>
-                    <select class="filters__dropdown">
+                    <select class="filters__dropdown" id = 'order-dropdown'>
                         <option value="newest">Newest first</option>
                         <option value="oldest">Oldest first</option>
                         <option value="esc">By increasing salary</option>

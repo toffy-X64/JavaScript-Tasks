@@ -1,10 +1,21 @@
 import { Modal } from './modal.js';
 import { Storage } from './storage.js';
 import { Vacancy } from './vacancy.js';
+import { Filter } from './filter.js';
+import { setupValidation } from './validation.js';
 
 function renderVacancies(items, callback)
 {
     const vacanciesSection = document.getElementById('vacancies-section');
+    destroyAllVacancies();
+
+    if (items.length === 0 || ( !Array.isArray(items) && Object.keys(items).length === 0 ) ) {
+        const h2 = document.createElement('h2');
+        h2.textContent = 'Vacancies not found!';
+
+        vacanciesSection.appendChild(h2);
+        return;
+    }
 
     items.map(v => {
         const vacancy = new Vacancy(v);
@@ -22,9 +33,10 @@ function destroyAllVacancies()
 function app() {
     const modal = new Modal('vacancyModal', 'open-vacancy-modal', 'vacancy-modal-close');
     const store = new Storage();
+    const filter = new Filter(store);
 
-    const makeFetchAndRender = () => {
-        renderVacancies(store.getAll(), (sourceId, action) => {
+    const Render = (vacancies) => {
+        renderVacancies(vacancies, (sourceId, action) => {
             switch(action)
             {
                 case 'edit':
@@ -35,16 +47,13 @@ function app() {
                 case 'delete':
                     store.delete(sourceId);
 
-                    destroyAllVacancies();
-                    makeFetchAndRender();
+                    Render(store.getAll());
                     break;
             }
         });
     };
 
-    modal.setOnSendCallback( (e) => {
-        e.preventDefault();
-
+    const AddOrUpdateItem = (e) => {
         try {
             const item = {};
                 
@@ -64,14 +73,23 @@ function app() {
             alert(err);
         }
         finally {   
-            destroyAllVacancies();
-            makeFetchAndRender();
+            Render(store.getAll());
 
             modal.resetForm();
             modal.PublicToggle();
         }
+    };
+
+    modal.setOnSendCallback( (e) => {
+        e.preventDefault();
+        AddOrUpdateItem(e);
     } );
 
-    makeFetchAndRender();
+    filter.setOnFilterUpdates( (vacancies) => {
+        Render(vacancies);
+    } );
+
+    setupValidation(modal.form);
+    Render(store.getAll());
 }
 document.addEventListener('DOMContentLoaded', app);
