@@ -54,6 +54,7 @@ export class Vacancy {
 
         const btnDelete = document.createElement('button');
         btnDelete.classList.add('vacancy-card__btn', 'delete');
+        btnDelete.id = 'delete-vacancy-button';
         btnDelete.textContent = 'Видалити';
 
         btnEdit.onclick = (e) => callback(this.id, 'edit');

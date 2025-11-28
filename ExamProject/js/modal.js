@@ -6,8 +6,12 @@ export class Modal
         this.form = this.modal.querySelector('.modal__form');
 
         this.initModal();
-        this.addSource(sourceId);
-        this.addCloseSource(closeId);
+
+        if (sourceId)
+            this.addSource(sourceId);
+
+        if (closeId)
+            this.addCloseSource(closeId);
 
         this.onSendCallback = null;
     }
@@ -74,6 +78,10 @@ export class Modal
     PublicToggle()
     {
         this.#toggle();
+    }
+
+    PublicClose() {
+        this.modal.classList.remove('active');
     }
 
     resetForm()

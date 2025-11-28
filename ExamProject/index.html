@@ -10,7 +10,7 @@
 <body>
     <header class="header">
         <div class="header__container container">
-            <h1 class="header__title">eJobs</h1>
+            <h1 class="header__title">єРобота</h1>
             <button class="header__button" id = 'open-vacancy-modal'>create Vacancy</button>
         </div>
     </header>
@@ -50,10 +50,26 @@
                     </div>
 
                     <input type="text" name = 'id' id = 'id' style = 'display: none;'>
-                    <button type="submit" class="modal__submit">Додати вакансію</button>
+                    <button type="submit" class="modal__submit">Зберегти вакансію</button>
                 </form>
             </div>
         </div>
+
+        <div class="modal" id='deleteModal'>
+            <div class="modal__content" id='delete-modal-content'>
+                <button id="delete-modal-btn-close" class="modal-close">×</button>
+            
+                <h3 class="modal-title">Ви дійсно хочете видалити вакансію?</h3>
+            
+                <form class="modal__form-delete modal__form">
+                    <div class="modal-actions">
+                        <button type="submit" name="action" value="yes" class="btn btn-danger" id = 'btn-yes'>Так</button>
+                        <button type="submit" name="action" value="no" class="btn btn-secondary">Ні</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
 
         <div class="container">
             <section class="filters">
@@ -75,8 +91,7 @@
                 </div>
             </section>
 
-            <section class="vacancies" id = 'vacancies-section'>
-            </section>
+            <section class="vacancies" id = 'vacancies-section'></section>
 
 
             <div class="pagination">

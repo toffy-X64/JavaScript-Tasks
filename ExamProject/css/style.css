@@ -311,6 +311,63 @@ input.modal__input:invalid:not(:placeholder-shown) {
   padding: 5px;
 }
 
+#delete-modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px;
+}
+
+.modal-title {
+    font-size: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* кнопка закриття */
+.modal-close {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* кнопки */
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-danger {
+    background: #e53935;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background: #c62828;
+}
+
+.btn-secondary {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background: #cacaca;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

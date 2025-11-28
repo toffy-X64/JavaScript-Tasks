@@ -38,6 +38,8 @@ function app() {
     const filter = new Filter(store);
     const pagination = new Pagination('pagination');
 
+    const deleteModal = new Modal('deleteModal', null, 'delete-modal-btn-close');
+
     const Render = (vacancies) => {
         renderVacancies(vacancies, (sourceId, action) => {
             switch(action)
@@ -48,9 +50,16 @@ function app() {
                     modal.PublicToggle();
                     break;
                 case 'delete':
-                    store.delete(sourceId);
-
-                    pagination.update(store.getAll());
+                    deleteModal.PublicToggle();
+                    deleteModal.setOnSendCallback((e) => {
+                        e.preventDefault();
+                        const btnYes = document.getElementById('btn-yes');
+                        deleteModal.PublicClose();
+                        if (e.submitter == btnYes) {
+                            store.delete(sourceId);
+                            pagination.update(store.getAll());
+                        }
+                    });
                     break;
             }
         });
