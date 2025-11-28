@@ -5,6 +5,7 @@ export class Storage
             ...item
         };
         newItem.id = crypto.randomUUID();
+        newItem.createdAt = Date.now();
         
         const items = JSON.parse(localStorage.getItem('items')) || [];
         items.push(newItem);
@@ -36,15 +37,6 @@ export class Storage
     getAll() {
         return JSON.parse(localStorage.getItem('items'));
     }
-    
-    getPage(perPage, pageNumber) {
-        const allItems = this.getAll();
-
-        const startIndex = perPage * (pageNumber - 1);
-        const endIndex = startIndex + perPage;
-
-        return allItems.slice(startIndex, endIndex);
-    }
 
     getById(id) {
         const items = JSON.parse(localStorage.getItem('items'));
@@ -58,8 +50,9 @@ export class Storage
         return allItems.filter(item => {
             const name = (item.title || "").toLowerCase();
             const company = (item.companyName || "").toLowerCase();
+            const location = (item.location || "").toLowerCase();
 
-            return name.includes(query) || company.includes(query);
+            return name.includes(query) || company.includes(query) || location.includes(query);
         });
     }
 

@@ -3,6 +3,8 @@ import { Storage } from './storage.js';
 import { Vacancy } from './vacancy.js';
 import { Filter } from './filter.js';
 import { setupValidation } from './validation.js';
+import { Pagination } from './pagination.js';
+import { addMockItems } from './mock.js';
 
 function renderVacancies(items, callback)
 {
@@ -34,6 +36,7 @@ function app() {
     const modal = new Modal('vacancyModal', 'open-vacancy-modal', 'vacancy-modal-close');
     const store = new Storage();
     const filter = new Filter(store);
+    const pagination = new Pagination('pagination');
 
     const Render = (vacancies) => {
         renderVacancies(vacancies, (sourceId, action) => {
@@ -47,10 +50,11 @@ function app() {
                 case 'delete':
                     store.delete(sourceId);
 
-                    Render(store.getAll());
+                    pagination.update(store.getAll());
                     break;
             }
         });
+        
     };
 
     const AddOrUpdateItem = (e) => {
@@ -73,8 +77,7 @@ function app() {
             alert(err);
         }
         finally {   
-            Render(store.getAll());
-
+            pagination.update(store.getAll());
             modal.resetForm();
             modal.PublicToggle();
         }
@@ -85,11 +88,18 @@ function app() {
         AddOrUpdateItem(e);
     } );
 
+
     filter.setOnFilterUpdates( (vacancies) => {
+        pagination.currentPage = 1;
+        pagination.update(vacancies);
+    } );
+
+    pagination.onItemsUpdated( (vacancies) => {
         Render(vacancies);
     } );
 
+    //addMockItems(store);
     setupValidation(modal.form);
-    Render(store.getAll());
+    pagination.update(store.getAll());
 }
 document.addEventListener('DOMContentLoaded', app);
